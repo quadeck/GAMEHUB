@@ -11,65 +11,179 @@
 }
 
 body {
-    font-family: 'Itim', sans-serif;
+    font-family: 'Itim Cyrillic', sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    color: #333;
+    color: #000000;
 }
 
 header {
-    background-color: #d5d5d5;
+    background-color: #ffffff;
     color: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-bottom: 3px solid orange;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg,
+        rgba(255,0,255,0) 0%,
+        #ff7700 20%,
+        #000000 50%,
+        #ff7700 80%,
+        rgba(255,0,255,0) 100%);
+    background-size: 200% 100%;
+    animation: neonFlow 3s linear infinite;
+    box-shadow: 0 0 10px #000000,
+                0 0 20px #ff7700;
 }
 
 main {
     position: relative;
     flex: 1;
-    padding: 30px 20px;
+    padding: 28px 0;
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
     min-height: 300px;
-}
-
-main::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url(/static/images/mini_logo.jpg);
-    background-size: 239px 235.5px;
-    opacity: 0.2;
-    z-index: -1;
+    display: flex;
+    justify-content: space-between; /* Изменено для выравнивания */
+    text-align: center;
 }
 
 footer {
     background-color: #000000;
     text-align: center;
-    border-top: 3px solid orange;
     margin-top: auto;
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     gap: 30px;
-    padding: 25px 25px;
+    padding: 30px;
+    position: relative;
+    border-top: none;
 }
 
-nav {
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg,
+        rgba(255,119,0,0) 0%,
+        #ff7700 20%,
+        #ffffff 50%,
+        #ff7700 80%,
+        rgba(255,119,0,0) 100%);
+    background-size: 200% 100%;
+    animation: neonFlow 3s linear infinite;
+    box-shadow: 0 0 10px #ff7700,
+                0 0 20px #ffffff;
+}
+
+.header-nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+.main-nav {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.center-content {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.address-text {
+    font-size: 74px; /* Размер для "PC-CLUB" */
+    font-family: "Ethnocentric RUS-LAT";
+}
+
+.address-text span {
+    font-size: 30px;
+    font-family: "Itim Cyrillic";
+}
+
+.cfg-nav {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.about-nav {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-family: "Ethnocentric RUS-LAT";
+}
+
+.about-nav a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-title {
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 50px;
+    color: rgba(0, 0, 0, 0.73);
+    text-transform: uppercase;
+    animation: 2s neon-2 alternate-reverse infinite;
+}
+
+.header-logo {
+    height: 90px;
+    width: auto;
+}
+
+.levo, .pravo {
+    height: 150px;
+    width: auto;
+    max-width: 400px;
+}
+
+.levo {
+    margin-right: auto;
+}
+
+.pravo {
+    margin-left: auto;
+}
+
+.price, .cfg {
+    position: relative;
+    display: block;
+    max-width: 100%;
+    border: solid orange 5px;
+    box-shadow: 0 0 20px #ff7700, 0 0 40px #000000;
+    animation: neonBorder 1.5s linear infinite;
+}
+
+.price{
+    margin-left: 10%;
 }
 
 .main-soc-image-button {
@@ -80,22 +194,29 @@ nav {
     display: block;
 }
 
-.header-logo {
-    height: 90px;
-    width: auto;
+@keyframes neonFlow {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
-.pravo {
-    height: 150px;
-    width: auto;
-    max-width: 400px;
-    margin-left: auto; !important;
+@keyframes neon-2 {
+    from {
+        text-shadow: 0 0 5px #ff7700,
+        0 0 10px #ff7700,
+        0 0 15px #ff7700,
+        0 0 20px #ff7700;
+    }
+    to {
+        text-shadow: 0 0 20px #ff7700,
+        0 0 35px #ff7700,
+        0 0 40px #ff7700,
+        0 0 50px #ff7700,
+        0 0 800px #ff7700;
+    }
 }
 
-.levo {
-    height: 150px;
-    width: auto;
-    max-width: 400px;
-    margin-right: auto; !important;
-    right: 50px;
+@keyframes neonBorder {
+    0% { box-shadow: 0 0 20px rgb(255, 119, 0), 0 0 40px #000000; }
+    50% { box-shadow: 0 0 30px #000000, 0 0 60px #ff7700; }
+    100% { box-shadow: 0 0 20px #ff7700, 0 0 40px #000000; }
 }
